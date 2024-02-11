@@ -1,0 +1,260 @@
+.reverse {
+   	  unicode-bidi: bidi-override;
+   	  direction: rtl;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  /* background-image: url(../img/pattern.svg); */
+  background-image: url(../img/pattern.svg);
+  /* background-position: center; */
+  /* background-size: contain; */
+  /* background-size: cover; */
+  /* background-attachment: fixed; */
+}
+
+p , li {
+  padding-right: 1em;
+}
+
+.caja {
+  background-color: #ffffffbf;
+  border: 1px solid black;
+  margin: 1em 0;
+  max-width: 1100px;
+  -webkit-box-shadow: 3px 3px 8px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 3px 8px 1px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 8px 1px rgba(0,0,0,0.75);
+}
+header {
+  display: block;
+  width: 100%;
+}
+header div.fondo {
+  height: 16em;
+  padding-top: 1em;
+  /* display: block; */
+  display: table;
+  margin: 1em auto;
+  text-transform: uppercase;
+  color: black;
+  width: calc(100% - 3em);
+  max-width: 1100px;
+  text-align: center;
+
+}
+div.cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+header div h1.nombre {
+   color: white;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+  font-size: 3em;
+  margin-top: 0;
+  margin-bottom: 0.1em;
+  text-align: center;
+
+  border-bottom: 2px solid black;
+  display: inline-block;
+}
+/*
+header div p {
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 2em;
+  word-break: break-all;
+}*/
+div.redes {
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+  margin: 0 auto 0.1em auto;
+  font-size: 3.2em;
+}
+div.contenedor {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 3em);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+div.contenedor aside{
+  margin-right: 1em;
+}
+div.contenedor main {
+  margin-left: 1em;
+}
+aside, main {
+  border: 1px solid black;
+}
+aside {
+  width: 30%;
+  /* min-width: 326px; */
+}
+aside, main {
+  padding-left: 1em;
+}
+div.foto {
+  width: 100%;
+
+}
+.circle-with-border
+{
+  max-width: 75%;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
+  border: 0.5em solid rgb(21,121,153);
+  margin-top: 1em;
+}
+
+div.datos li i,
+div.contacto li i {
+  float: left;
+  padding: 0 10px;
+  font-size: 1.8em;
+  color: rgb(0,119,181);
+}
+div.contacto ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+div.idiomas ul li img {
+  float: left;
+  height: 1.8em;
+  width: 1.8em;
+  border-width: 2px;
+  margin: 0 1em;
+}
+
+aside ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+h2, h3, h4 {
+  text-transform: uppercase;
+}
+h2 {
+  border-bottom: 0.6em solid rgb(21,121,153);
+  margin-top: 1em;
+}
+h3 {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  padding-left: 0.5em;
+}
+h4, h4 + span, h4 + p {
+  margin: .25em auto;
+  padding-left: 2.5em;
+}
+.underline {
+  text-decoration: underline;
+}
+span + ul {
+  list-style-position: inside;
+  list-style-type: none;
+  padding-left: 10px;
+  margin: 0.4em auto 2em 2.5em;
+}
+h3 span.btn-verde {
+  background-color: darkgreen;
+  border-radius: 10px;
+  border: 2px solid green;
+  border-style: groove;
+  color: white;
+  text-decoration: none;
+  padding: 0 1.2em;
+  margin-left: 0.5em;
+  font-size: 0.8em;
+  letter-spacing: 2px;
+}
+@media only screen and (min-width: 640px) {
+  h3 span.btn-verde {
+    display: none;
+  }
+}
+h3 + p {
+  padding-left: 3em;
+  margin-top: 0;
+}
+
+main {
+  width: 70%;
+}
+
+div.about h3 + p {
+  padding-left: 24px;
+  margin-bottom: 8px;
+}
+
+div.experience .logos {
+  display: flex;
+  /* justify-content: space-evenly; */
+  justify-content: center;
+  flex-flow: row;
+  flex-wrap: wrap;
+  padding-bottom: 2em;
+}
+
+div.experience .logos > img {
+  width: 150px;
+  height: 150px;
+}
+div.experience .logos figure {
+  max-width: 150px;
+  height: 150px;
+  margin: 0 1em;
+  margin-top: 0.5em;
+  position: relative;
+}
+
+div.experience .logos figure figcaption {
+  position: absolute;
+  font-weight: bold;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+div.experience .logos figure img {
+  width: 100%;
+  height: 100%;
+}
+div.experience div.logos figure.con-epigrafe img {
+  height: calc(100% - 1.5em);
+  width: auto;
+}
+
+
+div.otros {
+  width: 100%;
+  padding-left: 1em;
+}
+
+h3 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media screen and (max-width:768px) {
+  div.contenedor {
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+  div.contenedor .caja {
+    width: calc(100% - 4em);
+    margin: auto;
+    margin-bottom: 1.5em;
+    padding-bottom: 1em;
+  }
+}
