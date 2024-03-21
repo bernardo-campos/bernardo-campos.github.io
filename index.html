@@ -84,7 +84,7 @@
             <li>
               <i class="far fa-clock"></i>
               <h3>Hora actual</h3>
-              <p>21:01:01</p>
+              <p id="time"></p>
             </li>
           </ul>
       </div> <!-- .datos -->
@@ -227,6 +227,13 @@
 
 
   <script src="js/plugins.js"></script>
+  <script type="text/javascript">
+    setInterval(function() {
+      date = new Date();
+      time = date.toLocaleString('es-AR', {hour:'2-digit',minute:'2-digit',second:'2-digit', hour12: false, timeZone: 'America/Argentina/Buenos_Aires' });
+      document.getElementById('time').innerText = time;
+    }, 1000);
+  </script>
 
 </body>
 
