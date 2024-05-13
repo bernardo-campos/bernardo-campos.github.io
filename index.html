@@ -7,6 +7,29 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
 	<!-- FontAwesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- Background -->
+	<!-- Credits: https://codepen.io/P1N2O/pen/pyBNzX -->
+	<style type="text/css">
+		body .hero {
+			background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+			background-size: 400% 400%;
+			animation: gradient 15s ease infinite;
+			height: 100vh;
+		}
+
+		@keyframes gradient {
+			0% {
+				background-position: 0% 50%;
+			}
+			50% {
+				background-position: 100% 50%;
+			}
+			100% {
+				background-position: 0% 50%;
+			}
+		}
+	</style>
+
 	<!-- Heatmap -->
 	<script src="https://d3js.org/d3.v7.min.js"></script>
 	<script src="https://unpkg.com/cal-heatmap@4.2.4/dist/cal-heatmap.min.js"></script>
@@ -31,7 +54,7 @@
 	        <div class="navbar-menu">
 
 	          <div class="navbar-end">
-	            <a class="navbar-item is-active">
+	            <a class="navbar-item is-active" style="background: unset;">
 	            	<figure class="image is-24x24 mr-2">
 					  <img class="is-rounded" src="img/icons/uk.svg" />
 					</figure>
@@ -181,6 +204,16 @@
 	</div>
 </section>
 
+<footer class="footer">
+	<div class="section-heading has-text-centered">
+		<p>
+			<strong>Made with <a href="https://bulma.io/">Bulma</a></strong> - Source code <a href="https://github.com/bernardo-campos/bernardo-campos.github.io">here</a>
+			<br>
+			&copy; <span id="year"></span>
+		</p>
+	</div>
+</footer>
+
 
 <script type="text/javascript">
 
@@ -193,6 +226,8 @@
     setInterval(function () {
     	document.getElementById('time').innerText = getCurrentTime();
     }, 1000);
+
+    document.getElementById('year').innerText = new Date().getFullYear();
 
     function createGithubCal(data) {
 
