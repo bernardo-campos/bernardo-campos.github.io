@@ -154,7 +154,7 @@
 					<div class="card">
 						<header class="card-header">
 							<p class="card-header-title">
-								<span>LyricsApp</span>
+								<span>QuotesApp</span>
 								<span class="is-pulled-right">
 									<span class="tag is-default">Laravel</span>
 									<span class="tag is-default">Livewire</span>
@@ -168,7 +168,7 @@
 							</figure>
 						</div>
 						<footer class="card-footer">
-							<a href="javascript:void(0)" class="card-footer-item has-text-grey-lighter">Live demo</a>
+							<a data-check="https://quotes.bernu.dev/healthcheck" data-url="https://quotes.bernu.dev" href="javascript:void(0)" class="card-footer-item has-text-grey-lighter">Live demo</a>
 							<a href="https://github.com/bernardo-campos/quotes" class="card-footer-item">Source
 							Code</a>
 						</footer>
@@ -193,7 +193,7 @@
 							</figure>
 						</div>
 						<footer class="card-footer">
-							<a href="javascript:void(0)" class="card-footer-item has-text-grey-lighter">Live demo</a>
+							<a data-check="https://lyrics.bernu.dev/healthcheck" data-url="https://lyrics.bernu.dev" href="javascript:void(0)" class="card-footer-item has-text-grey-lighter">Live demo</a>
 							<a href="https://github.com/bernardo-campos/lyrics" class="card-footer-item">Source
 							Code</a>
 						</footer>
@@ -228,6 +228,21 @@
     }, 1000);
 
     document.getElementById('year').innerText = new Date().getFullYear();
+
+    (function healtCheckAndUpdateLinks() {
+		const linksWithDataUrl = document.querySelectorAll('a[data-check]');
+
+		linksWithDataUrl.forEach(link => {
+			fetch( link.getAttribute('data-check') )
+				.then(response => {
+					link.classList.remove('has-text-grey-lighter');
+					link.setAttribute('href', link.getAttribute('data-url'));
+				})
+			.catch(error => {
+				console.error('There was a problem with the fetch operation:', error);
+			});
+		});
+    })()
 
     function createGithubCal(data) {
 
