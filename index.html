@@ -154,11 +154,20 @@
 	<div class="section-heading">
 		<h3 class="title is-2 has-text-centered">My activity</h3>
 		<div class="mx-auto" style="max-width: min-content; overflow: auto;">
-			<p class="title is-4">Github</p>
+			<p class="title is-4">On Github</p>
 			<div id="githubCal"></div>
 			<div class="has-text-right pt-1">
 		      <span style="color: #768390">Less</span>
-		      <div id="legend" style="display: inline-block;" ></div>
+		      <div id="legendGithub" style="display: inline-block;" ></div>
+		      <span style="color: #768390">More</span>
+		    </div>
+		</div>
+		<div class="mx-auto pt-2" style="max-width: min-content; overflow: auto;">
+			<p class="title is-4">On HackerRank</p>
+			<div id="hackerrankCal"></div>
+			<div class="has-text-right pt-1">
+		      <span style="color: #768390">Less</span>
+		      <div id="legendHackerrank" style="display: inline-block;" ></div>
 		      <span style="color: #768390">More</span>
 		    </div>
 		</div>
@@ -266,22 +275,21 @@
 		});
     })()
 
-    function createGithubCal(data) {
-
-    	minDate = data.map( x => x.date ).sort()[0];
-    	maxDate = data.map( x => x.date ).sort()[data.length-1];
+    function createCalendar(data, tagId, legendSelector) {
+    	let today = new Date();
+    	let startDate = new Date(today.getFullYear() - 1, today.getMonth() + 1, 1)
 
 	    const githubCal = new CalHeatmap();
 		githubCal.paint({
-			itemSelector: document.getElementById('githubCal'),
+			itemSelector: document.getElementById(tagId),
 			data: {
 				source: data,
 				x: 'date',
 				y: 'value'
 			},
 			date: {
-				start: new Date( minDate ),
-				end: new Date( maxDate )
+				start: startDate,
+				end: today
 			},
 			range: 12,
 			scale: {
@@ -310,8 +318,8 @@
 		      Tooltip,
 		      {
 		        text: function (date, value, dayjsDate) {
-		        	if (date < new Date( minDate )) {
-		        		return 'No info before ' + minDate;
+		        	if (date < new Date( startDate )) {
+		        		return 'No info before ' + startDate;
 		        	}
 					return (
 						(value ? value : 'No') +
@@ -325,7 +333,7 @@
 		      LegendLite,
 		      {
 		        includeBlank: true,
-		        itemSelector: '#legend',
+		        itemSelector: legendSelector,
 		        radius: 2,
 		        width: 11,
 		        height: 11,
@@ -361,8 +369,22 @@
 	            	})
 	            )
 	            .filter( x => x.value > 0 )
+    		createCalendar(data, 'githubCal', '#legendGithub');
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
 
-    		createGithubCal(data);
+    fetch('https://hackerrank.bernu.dev/?username=berna')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+        	data = Object.keys(data).map((key) => ({value: data[key], date: key}) );
+    		createCalendar(data, 'hackerrankCal', '#legendHackerrank');
         })
         .catch(error => {
             console.error('Error fetching data:', error);
