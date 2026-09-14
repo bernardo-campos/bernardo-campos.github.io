@@ -169,7 +169,7 @@
 <section class="section">
 	<div class="section-heading">
 		<h3 class="title is-2 has-text-centered">My activity</h3>
-		<div class="mx-auto" style="max-width: min-content; overflow: auto;">
+		<div id="githubContainer" class="mx-auto" style="max-width: min-content; overflow: auto;">
 			<p class="title is-4">On Github</p>
 			<div id="githubCal"></div>
 			<div class="has-text-right pt-1">
@@ -444,6 +444,7 @@
         })
         .catch(error => {
             console.error('Error fetching data:', error);
+            document.getElementById('githubContainer').style.display = 'none';
         });
 
     fetch(urlHackerrank)
